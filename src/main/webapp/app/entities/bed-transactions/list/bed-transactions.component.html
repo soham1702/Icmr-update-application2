@@ -1,0 +1,137 @@
+<div>
+  <h2 id="page-heading" data-cy="BedTransactionsHeading">
+    <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.home.title">Bed Transactions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bed-transactions"
+        [routerLink]="['/bed-transactions/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.home.createLabel"> Create a new Bed Transactions </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bedTransactions?.length === 0">
+    <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.home.notFound">No bedTransactions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="bedTransactions && bedTransactions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="occupied">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.occupied">Occupied</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="onCylinder">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.onCylinder">On Cylinder</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="onLMO">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.onLMO">On LMO</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="onConcentrators">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.onConcentrators">On Concentrators</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.lastModified">Last Modified</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.lastModifiedBy">Last Modified By</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bedType.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.bedType">Bed Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="hospital.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.hospital">Hospital</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bedTransactions of bedTransactions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/bed-transactions', bedTransactions.id, 'view']">{{ bedTransactions.id }}</a>
+          </td>
+          <td>{{ bedTransactions.occupied }}</td>
+          <td>{{ bedTransactions.onCylinder }}</td>
+          <td>{{ bedTransactions.onLMO }}</td>
+          <td>{{ bedTransactions.onConcentrators }}</td>
+          <td>{{ bedTransactions.lastModified | formatMediumDatetime }}</td>
+          <td>{{ bedTransactions.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="bedTransactions.bedType">
+              <a [routerLink]="['/bed-type', bedTransactions.bedType?.id, 'view']">{{ bedTransactions.bedType?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="bedTransactions.hospital">
+              <a [routerLink]="['/hospital', bedTransactions.hospital?.id, 'view']">{{ bedTransactions.hospital?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/bed-transactions', bedTransactions.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/bed-transactions', bedTransactions.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(bedTransactions)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="bedTransactions && bedTransactions.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

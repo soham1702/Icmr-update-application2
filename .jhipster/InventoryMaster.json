@@ -1,0 +1,68 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114633",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "inventory_master",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "volume",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "calulateVolume",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dimensions",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subTypeInd",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "InventoryMaster",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "inventoryType",
+      "otherEntityRelationshipName": "inventoryMaster",
+      "relationshipName": "inventoryType",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

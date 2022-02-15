@@ -1,0 +1,12 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "SupplierType": {
+      "null": "",
+      "REFILLER": "Refiller",
+      "MANUFACTURER": "Manufacturer",
+      "DEALER": "Dealer",
+      "DISTRIBUTOR": "Distributor",
+      "INDUSTRY": "Industry"
+    }
+  }
+}

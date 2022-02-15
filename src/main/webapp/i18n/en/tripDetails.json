@@ -1,0 +1,36 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "tripDetails": {
+      "home": {
+        "title": "Trip Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Trip Details",
+        "createOrEditLabel": "Create or edit a Trip Details",
+        "notFound": "No Trip Details found"
+      },
+      "created": "A new Trip Details is created with identifier {{ param }}",
+      "updated": "A Trip Details is updated with identifier {{ param }}",
+      "deleted": "A Trip Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Trip Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Trip Details"
+      },
+      "id": "ID",
+      "stockSent": "Stock Sent",
+      "stockRec": "Stock Rec",
+      "comment": "Comment",
+      "receiverComment": "Receiver Comment",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "supplier": "Supplier",
+      "hospital": "Hospital",
+      "transactions": "Transactions",
+      "trip": "Trip"
+    }
+  }
+}

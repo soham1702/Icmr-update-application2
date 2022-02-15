@@ -1,0 +1,190 @@
+<div>
+  <h2 id="page-heading" data-cy="SupplierHeading">
+    <span jhiTranslate="icmrDailyCountUpdation2App.supplier.home.title">Suppliers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.supplier.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-supplier"
+        [routerLink]="['/supplier/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.supplier.home.createLabel"> Create a new Supplier </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="suppliers?.length === 0">
+    <span jhiTranslate="icmrDailyCountUpdation2App.supplier.home.notFound">No suppliers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="suppliers && suppliers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierType">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.supplierType">Supplier Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contactNo">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.contactNo">Contact No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="latitude">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.latitude">Latitude</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="longitude">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.longitude">Longitude</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="registrationNo">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.registrationNo">Registration No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address1">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.address1">Address 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address2">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.address2">Address 2</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="area">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.area">Area</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pinCode">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.pinCode">Pin Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="statusInd">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.statusInd">Status Ind</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="state.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.state">State</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="district.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.district">District</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="taluka.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.taluka">Taluka</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="city.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.city">City</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="inventoryType.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.supplier.inventoryType">Inventory Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supplier of suppliers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/supplier', supplier.id, 'view']">{{ supplier.id }}</a>
+          </td>
+          <td>{{ supplier.name }}</td>
+          <td jhiTranslate="{{ 'icmrDailyCountUpdation2App.SupplierType.' + supplier.supplierType }}">{{ supplier.supplierType }}</td>
+          <td>{{ supplier.contactNo }}</td>
+          <td>{{ supplier.latitude }}</td>
+          <td>{{ supplier.longitude }}</td>
+          <td>{{ supplier.email }}</td>
+          <td>{{ supplier.registrationNo }}</td>
+          <td>{{ supplier.address1 }}</td>
+          <td>{{ supplier.address2 }}</td>
+          <td>{{ supplier.area }}</td>
+          <td>{{ supplier.pinCode }}</td>
+          <td jhiTranslate="{{ 'icmrDailyCountUpdation2App.StatusInd.' + supplier.statusInd }}">{{ supplier.statusInd }}</td>
+          <td>{{ supplier.lastModified | formatMediumDatetime }}</td>
+          <td>{{ supplier.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="supplier.state">
+              <a [routerLink]="['/state', supplier.state?.id, 'view']">{{ supplier.state?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="supplier.district">
+              <a [routerLink]="['/district', supplier.district?.id, 'view']">{{ supplier.district?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="supplier.taluka">
+              <a [routerLink]="['/taluka', supplier.taluka?.id, 'view']">{{ supplier.taluka?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="supplier.city">
+              <a [routerLink]="['/city', supplier.city?.id, 'view']">{{ supplier.city?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="supplier.inventoryType">
+              <a [routerLink]="['/inventory-type', supplier.inventoryType?.id, 'view']">{{ supplier.inventoryType?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/supplier', supplier.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/supplier', supplier.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(supplier)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="suppliers && suppliers.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

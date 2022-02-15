@@ -1,0 +1,164 @@
+<div>
+  <h2 id="page-heading" data-cy="TripDetailsHeading">
+    <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.home.title">Trip Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-trip-details"
+        [routerLink]="['/trip-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.home.createLabel"> Create a new Trip Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tripDetails?.length === 0">
+    <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.home.notFound">No tripDetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tripDetails && tripDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="stockSent">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.stockSent">Stock Sent</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="stockRec">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.stockRec">Stock Rec</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="comment">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.comment">Comment</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="receiverComment">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.receiverComment">Receiver Comment</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.lastModifiedBy">Last Modified By</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplier.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.supplier">Supplier</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="hospital.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.hospital">Hospital</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactions.id">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.transactions">Transactions</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="trip.id">
+            <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.trip">Trip</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tripDetails of tripDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/trip-details', tripDetails.id, 'view']">{{ tripDetails.id }}</a>
+          </td>
+          <td>{{ tripDetails.stockSent }}</td>
+          <td>{{ tripDetails.stockRec }}</td>
+          <td>{{ tripDetails.comment }}</td>
+          <td>{{ tripDetails.receiverComment }}</td>
+          <td jhiTranslate="{{ 'icmrDailyCountUpdation2App.TransactionStatus.' + tripDetails.status }}">{{ tripDetails.status }}</td>
+          <td>{{ tripDetails.createdDate | formatMediumDatetime }}</td>
+          <td>{{ tripDetails.createdBy }}</td>
+          <td>{{ tripDetails.lastModified | formatMediumDatetime }}</td>
+          <td>{{ tripDetails.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="tripDetails.supplier">
+              <a [routerLink]="['/supplier', tripDetails.supplier?.id, 'view']">{{ tripDetails.supplier?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="tripDetails.hospital">
+              <a [routerLink]="['/hospital', tripDetails.hospital?.id, 'view']">{{ tripDetails.hospital?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="tripDetails.transactions">
+              <a [routerLink]="['/transactions', tripDetails.transactions?.id, 'view']">{{ tripDetails.transactions?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="tripDetails.trip">
+              <a [routerLink]="['/trip', tripDetails.trip?.id, 'view']">{{ tripDetails.trip?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/trip-details', tripDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/trip-details', tripDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tripDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="tripDetails && tripDetails.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

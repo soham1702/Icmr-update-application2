@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="securityUser">
+      <h2 data-cy="securityUserDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.securityUser.detail.title">Security User</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ securityUser.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ securityUser.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ securityUser.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.designation">Designation</span></dt>
+        <dd>
+          <span>{{ securityUser.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.login">Login</span></dt>
+        <dd>
+          <span>{{ securityUser.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.passwordHash">Password Hash</span></dt>
+        <dd>
+          <span>{{ securityUser.passwordHash }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.email">Email</span></dt>
+        <dd>
+          <span>{{ securityUser.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.imageUrl">Image Url</span></dt>
+        <dd>
+          <span>{{ securityUser.imageUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.activated">Activated</span></dt>
+        <dd>
+          <span>{{ securityUser.activated }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.langKey">Lang Key</span></dt>
+        <dd>
+          <span>{{ securityUser.langKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.activationKey">Activation Key</span></dt>
+        <dd>
+          <span>{{ securityUser.activationKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.resetKey">Reset Key</span></dt>
+        <dd>
+          <span>{{ securityUser.resetKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.resetDate">Reset Date</span></dt>
+        <dd>
+          <span>{{ securityUser.resetDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.mobileNo">Mobile No</span></dt>
+        <dd>
+          <span>{{ securityUser.mobileNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.oneTimePassword">One Time Password</span></dt>
+        <dd>
+          <span>{{ securityUser.oneTimePassword }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.otpExpiryTime">Otp Expiry Time</span></dt>
+        <dd>
+          <span>{{ securityUser.otpExpiryTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ securityUser.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ securityUser.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.securityPermission">Security Permission</span></dt>
+        <dd>
+          <span *ngFor="let securityPermission of securityUser.securityPermissions; let last = last">
+            <a [routerLink]="['/security-permission', securityPermission?.id, 'view']">{{ securityPermission.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.securityUser.securityRole">Security Role</span></dt>
+        <dd>
+          <span *ngFor="let securityRole of securityUser.securityRoles; let last = last">
+            <a [routerLink]="['/security-role', securityRole?.id, 'view']">{{ securityRole.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/security-user', securityUser.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

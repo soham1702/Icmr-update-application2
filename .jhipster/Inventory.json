@@ -1,0 +1,61 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114637",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "inventory",
+  "fields": [
+    {
+      "fieldName": "stock",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "capcity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "installedCapcity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Inventory",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "inventoryMaster",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "inventoryMaster",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "supplier",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "hospital",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

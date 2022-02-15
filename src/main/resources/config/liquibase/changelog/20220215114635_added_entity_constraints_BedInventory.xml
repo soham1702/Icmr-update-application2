@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity BedInventory.
+    -->
+    <changeSet id="20220215114635-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="bed_type_id"
+                                 baseTableName="bed_inventory"
+                                 constraintName="fk_bed_inventory__bed_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bed_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="hospital_id"
+                                 baseTableName="bed_inventory"
+                                 constraintName="fk_bed_inventory__hospital_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hospital"/>
+    </changeSet>
+</databaseChangeLog>

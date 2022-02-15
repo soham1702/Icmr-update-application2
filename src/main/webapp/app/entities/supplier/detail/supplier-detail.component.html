@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="supplier">
+      <h2 data-cy="supplierDetailsHeading"><span jhiTranslate="icmrDailyCountUpdation2App.supplier.detail.title">Supplier</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ supplier.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.name">Name</span></dt>
+        <dd>
+          <span>{{ supplier.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.supplierType">Supplier Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.SupplierType.' + supplier.supplierType }}">{{ supplier.supplierType }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.contactNo">Contact No</span></dt>
+        <dd>
+          <span>{{ supplier.contactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.latitude">Latitude</span></dt>
+        <dd>
+          <span>{{ supplier.latitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ supplier.longitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.email">Email</span></dt>
+        <dd>
+          <span>{{ supplier.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.registrationNo">Registration No</span></dt>
+        <dd>
+          <span>{{ supplier.registrationNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.address1">Address 1</span></dt>
+        <dd>
+          <span>{{ supplier.address1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.address2">Address 2</span></dt>
+        <dd>
+          <span>{{ supplier.address2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.area">Area</span></dt>
+        <dd>
+          <span>{{ supplier.area }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.pinCode">Pin Code</span></dt>
+        <dd>
+          <span>{{ supplier.pinCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.statusInd">Status Ind</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.StatusInd.' + supplier.statusInd }}">{{ supplier.statusInd }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ supplier.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ supplier.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.state">State</span></dt>
+        <dd>
+          <div *ngIf="supplier.state">
+            <a [routerLink]="['/state', supplier.state?.id, 'view']">{{ supplier.state?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.district">District</span></dt>
+        <dd>
+          <div *ngIf="supplier.district">
+            <a [routerLink]="['/district', supplier.district?.id, 'view']">{{ supplier.district?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.taluka">Taluka</span></dt>
+        <dd>
+          <div *ngIf="supplier.taluka">
+            <a [routerLink]="['/taluka', supplier.taluka?.id, 'view']">{{ supplier.taluka?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.city">City</span></dt>
+        <dd>
+          <div *ngIf="supplier.city">
+            <a [routerLink]="['/city', supplier.city?.id, 'view']">{{ supplier.city?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.supplier.inventoryType">Inventory Type</span></dt>
+        <dd>
+          <div *ngIf="supplier.inventoryType">
+            <a [routerLink]="['/inventory-type', supplier.inventoryType?.id, 'view']">{{ supplier.inventoryType?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/supplier', supplier.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

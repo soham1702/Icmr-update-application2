@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trip">
+      <h2 data-cy="tripDetailsHeading"><span jhiTranslate="icmrDailyCountUpdation2App.trip.detail.title">Trip</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trip.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.trackingNo">Tracking No</span></dt>
+        <dd>
+          <span>{{ trip.trackingNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.mobaId">Moba Id</span></dt>
+        <dd>
+          <span>{{ trip.mobaId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.numberPlate">Number Plate</span></dt>
+        <dd>
+          <span>{{ trip.numberPlate }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.stock">Stock</span></dt>
+        <dd>
+          <span>{{ trip.stock }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.TransactionStatus.' + trip.status }}">{{ trip.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ trip.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ trip.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ trip.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.comment">Comment</span></dt>
+        <dd>
+          <span>{{ trip.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ trip.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.trip.supplier">Supplier</span></dt>
+        <dd>
+          <div *ngIf="trip.supplier">
+            <a [routerLink]="['/supplier', trip.supplier?.id, 'view']">{{ trip.supplier?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/trip', trip.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

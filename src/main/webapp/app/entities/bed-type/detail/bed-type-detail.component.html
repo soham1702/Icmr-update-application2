@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bedType">
+      <h2 data-cy="bedTypeDetailsHeading"><span jhiTranslate="icmrDailyCountUpdation2App.bedType.detail.title">Bed Type</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bedType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedType.name">Name</span></dt>
+        <dd>
+          <span>{{ bedType.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedType.perDayOX">Per Day OX</span></dt>
+        <dd>
+          <span>{{ bedType.perDayOX }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedType.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ bedType.deleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedType.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ bedType.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedType.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ bedType.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bed-type', bedType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

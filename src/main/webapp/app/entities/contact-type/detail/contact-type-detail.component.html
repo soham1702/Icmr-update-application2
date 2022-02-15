@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contactType">
+      <h2 data-cy="contactTypeDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.contactType.detail.title">Contact Type</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contactType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.contactType.name">Name</span></dt>
+        <dd>
+          <span>{{ contactType.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.contactType.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ contactType.deleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.contactType.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ contactType.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.contactType.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ contactType.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contact-type', contactType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

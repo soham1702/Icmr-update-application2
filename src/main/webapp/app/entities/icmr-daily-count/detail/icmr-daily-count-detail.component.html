@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="iCMRDailyCount">
+      <h2 data-cy="iCMRDailyCountDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.detail.title">ICMR Daily Count</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.totalSamplesTested">Total Samples Tested</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.totalSamplesTested }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.totalNegative">Total Negative</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.totalNegative }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.totalPositive">Total Positive</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.totalPositive }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.currentPreviousMonthTest">Current Previous Month Test</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.currentPreviousMonthTest }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.districtId">District Id</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.districtId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.remarks">Remarks</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.remarks }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.editedOn">Edited On</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.editedOn | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.freeField1">Free Field 1</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.freeField1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.freeField2">Free Field 2</span></dt>
+        <dd>
+          <span>{{ iCMRDailyCount.freeField2 }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/icmr-daily-count', iCMRDailyCount.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

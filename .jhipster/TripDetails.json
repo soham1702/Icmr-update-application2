@@ -1,0 +1,84 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114642",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "trip_details",
+  "fields": [
+    {
+      "fieldName": "stockSent",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stockRec",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receiverComment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "TransactionStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "OPEN (Open),TRANSIT (Transit),CANCELLED (Cancelled),RECEIVED (Received)"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "TripDetails",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "supplier",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "hospital",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "transactions",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "transactions",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "trip",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "trip",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

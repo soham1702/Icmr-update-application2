@@ -1,0 +1,190 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-inventory-heading"
+        data-cy="InventoryCreateUpdateHeading"
+        jhiTranslate="icmrDailyCountUpdation2App.inventory.home.createOrEditLabel"
+      >
+        Create or edit a Inventory
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.stock" for="field_stock">Stock</label>
+          <input type="number" class="form-control" name="stock" id="field_stock" data-cy="stock" formControlName="stock" />
+          <div *ngIf="editForm.get('stock')!.invalid && (editForm.get('stock')!.dirty || editForm.get('stock')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('stock')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('stock')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.capcity" for="field_capcity">Capcity</label>
+          <input type="number" class="form-control" name="capcity" id="field_capcity" data-cy="capcity" formControlName="capcity" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.inventory.installedCapcity"
+            for="field_installedCapcity"
+            >Installed Capcity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="installedCapcity"
+            id="field_installedCapcity"
+            data-cy="installedCapcity"
+            formControlName="installedCapcity"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModified"
+              data-cy="lastModified"
+              type="datetime-local"
+              class="form-control"
+              name="lastModified"
+              formControlName="lastModified"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.inventoryMaster" for="field_inventoryMaster"
+            >Inventory Master</label
+          >
+          <select
+            class="form-control"
+            id="field_inventoryMaster"
+            data-cy="inventoryMaster"
+            name="inventoryMaster"
+            formControlName="inventoryMaster"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                inventoryMasterOption.id === editForm.get('inventoryMaster')!.value?.id
+                  ? editForm.get('inventoryMaster')!.value
+                  : inventoryMasterOption
+              "
+              *ngFor="let inventoryMasterOption of inventoryMastersSharedCollection; trackBy: trackInventoryMasterById"
+            >
+              {{ inventoryMasterOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.supplier" for="field_supplier"
+            >Supplier</label
+          >
+          <select class="form-control" id="field_supplier" data-cy="supplier" name="supplier" formControlName="supplier">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="supplierOption.id === editForm.get('supplier')!.value?.id ? editForm.get('supplier')!.value : supplierOption"
+              *ngFor="let supplierOption of suppliersSharedCollection; trackBy: trackSupplierById"
+            >
+              {{ supplierOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.inventory.hospital" for="field_hospital"
+            >Hospital</label
+          >
+          <select class="form-control" id="field_hospital" data-cy="hospital" name="hospital" formControlName="hospital">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="hospitalOption.id === editForm.get('hospital')!.value?.id ? editForm.get('hospital')!.value : hospitalOption"
+              *ngFor="let hospitalOption of hospitalsSharedCollection; trackBy: trackHospitalById"
+            >
+              {{ hospitalOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

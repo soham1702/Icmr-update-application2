@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="inventoryUsed">
+      <h2 data-cy="inventoryUsedDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.detail.title">Inventory Used</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ inventoryUsed.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.stock">Stock</span></dt>
+        <dd>
+          <span>{{ inventoryUsed.stock }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.capcity">Capcity</span></dt>
+        <dd>
+          <span>{{ inventoryUsed.capcity }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.comment">Comment</span></dt>
+        <dd>
+          <span>{{ inventoryUsed.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ inventoryUsed.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ inventoryUsed.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryUsed.inventory">Inventory</span></dt>
+        <dd>
+          <div *ngIf="inventoryUsed.inventory">
+            <a [routerLink]="['/inventory', inventoryUsed.inventory?.id, 'view']">{{ inventoryUsed.inventory?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/inventory-used', inventoryUsed.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

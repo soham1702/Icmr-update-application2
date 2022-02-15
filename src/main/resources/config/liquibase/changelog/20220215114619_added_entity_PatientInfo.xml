@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity PatientInfo.
+    -->
+    <changeSet id="20220215114619-1" author="jhipster">
+        <createTable tableName="patient_info">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="icmr_id" type="varchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_patient_info__icmr_id" />
+            </column>
+            <column name="srf_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lab_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="patient_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="patient_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="age" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="age_in" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="nationality" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="village_town" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pincode" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="patient_category" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_of_sample_collection" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_of_sample_received" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="sample_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sample_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="underlying_medical_condition" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hospitalized" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hospital_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hospitalization_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="hospital_state" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hospital_district" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="symptoms_status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="symptoms" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="testing_kit_used" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="e_gene_n_gene" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="ct_value_of_e_gene_n_gene" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="rd_rp_s_gene" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="ct_value_of_rd_rp_s_gene" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="o_rf_1_a_orf_1_b_nn_2_gene" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="ct_value_of_orf_1_a_orf_1_b_nn_2_gene" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="repeat_sample" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_of_sample_tested" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="entry_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="confirmation_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="final_result_sample" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="remarks" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited_on" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="ccms_pull_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="state_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="district_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="patient_info" columnName="date_of_sample_collection" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="date_of_sample_received" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="hospitalization_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="date_of_sample_tested" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="entry_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="confirmation_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="edited_on" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="ccms_pull_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="patient_info" columnName="last_modified" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220215114619-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/patient_info.csv"
+                  separator=";"
+                  tableName="patient_info"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="icmr_id" type="string"/>
+            <column name="srf_id" type="string"/>
+            <column name="lab_name" type="string"/>
+            <column name="patient_id" type="string"/>
+            <column name="patient_name" type="string"/>
+            <column name="age" type="string"/>
+            <column name="age_in" type="string"/>
+            <column name="gender" type="string"/>
+            <column name="nationality" type="string"/>
+            <column name="address" type="string"/>
+            <column name="village_town" type="string"/>
+            <column name="pincode" type="string"/>
+            <column name="patient_category" type="string"/>
+            <column name="date_of_sample_collection" type="date"/>
+            <column name="date_of_sample_received" type="date"/>
+            <column name="sample_type" type="string"/>
+            <column name="sample_id" type="string"/>
+            <column name="underlying_medical_condition" type="string"/>
+            <column name="hospitalized" type="string"/>
+            <column name="hospital_name" type="string"/>
+            <column name="hospitalization_date" type="date"/>
+            <column name="hospital_state" type="string"/>
+            <column name="hospital_district" type="string"/>
+            <column name="symptoms_status" type="string"/>
+            <column name="symptoms" type="string"/>
+            <column name="testing_kit_used" type="string"/>
+            <column name="e_gene_n_gene" type="string"/>
+            <column name="ct_value_of_e_gene_n_gene" type="string"/>
+            <column name="rd_rp_s_gene" type="string"/>
+            <column name="ct_value_of_rd_rp_s_gene" type="string"/>
+            <column name="o_rf_1_a_orf_1_b_nn_2_gene" type="string"/>
+            <column name="ct_value_of_orf_1_a_orf_1_b_nn_2_gene" type="string"/>
+            <column name="repeat_sample" type="string"/>
+            <column name="date_of_sample_tested" type="date"/>
+            <column name="entry_date" type="date"/>
+            <column name="confirmation_date" type="date"/>
+            <column name="final_result_sample" type="string"/>
+            <column name="remarks" type="string"/>
+            <column name="edited_on" type="date"/>
+            <column name="ccms_pull_date" type="date"/>
+            <column name="last_modified" type="date"/>
+            <column name="last_modified_by" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,218 @@
+<div>
+  <h2 id="page-heading" data-cy="HospitalHeading">
+    <span jhiTranslate="icmrDailyCountUpdation2App.hospital.home.title">Hospitals</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.hospital.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-hospital"
+        [routerLink]="['/hospital/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.hospital.home.createLabel"> Create a new Hospital </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="hospitals?.length === 0">
+    <span jhiTranslate="icmrDailyCountUpdation2App.hospital.home.notFound">No hospitals found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="hospitals && hospitals.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="category">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.category">Category</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="subCategory">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.subCategory">Sub Category</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contactNo">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.contactNo">Contact No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="latitude">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.latitude">Latitude</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="longitude">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.longitude">Longitude</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="docCount">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.docCount">Doc Count</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="registrationNo">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.registrationNo">Registration No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address1">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.address1">Address 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address2">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.address2">Address 2</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="area">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.area">Area</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pinCode">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.pinCode">Pin Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="hospitalId">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.hospitalId">Hospital Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="odasFacilityId">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.odasFacilityId">Odas Facility Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="referenceNumber">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.referenceNumber">Reference Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="statusInd">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.statusInd">Status Ind</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="state.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.state">State</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="district.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.district">District</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="taluka.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.taluka">Taluka</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="city.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.city">City</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="municipalCorp.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.municipalCorp">Municipal Corp</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="hospitalType.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.hospital.hospitalType">Hospital Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hospital of hospitals; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/hospital', hospital.id, 'view']">{{ hospital.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'icmrDailyCountUpdation2App.HospitalCategory.' + hospital.category }}">{{ hospital.category }}</td>
+          <td jhiTranslate="{{ 'icmrDailyCountUpdation2App.HospitalSubCategory.' + hospital.subCategory }}">{{ hospital.subCategory }}</td>
+          <td>{{ hospital.contactNo }}</td>
+          <td>{{ hospital.latitude }}</td>
+          <td>{{ hospital.longitude }}</td>
+          <td>{{ hospital.docCount }}</td>
+          <td>{{ hospital.email }}</td>
+          <td>{{ hospital.name }}</td>
+          <td>{{ hospital.registrationNo }}</td>
+          <td>{{ hospital.address1 }}</td>
+          <td>{{ hospital.address2 }}</td>
+          <td>{{ hospital.area }}</td>
+          <td>{{ hospital.pinCode }}</td>
+          <td>{{ hospital.hospitalId }}</td>
+          <td>{{ hospital.odasFacilityId }}</td>
+          <td>{{ hospital.referenceNumber }}</td>
+          <td jhiTranslate="{{ 'icmrDailyCountUpdation2App.StatusInd.' + hospital.statusInd }}">{{ hospital.statusInd }}</td>
+          <td>{{ hospital.lastModified | formatMediumDatetime }}</td>
+          <td>{{ hospital.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="hospital.state">
+              <a [routerLink]="['/state', hospital.state?.id, 'view']">{{ hospital.state?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="hospital.district">
+              <a [routerLink]="['/district', hospital.district?.id, 'view']">{{ hospital.district?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="hospital.taluka">
+              <a [routerLink]="['/taluka', hospital.taluka?.id, 'view']">{{ hospital.taluka?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="hospital.city">
+              <a [routerLink]="['/city', hospital.city?.id, 'view']">{{ hospital.city?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="hospital.municipalCorp">
+              <a [routerLink]="['/municipal-corp', hospital.municipalCorp?.id, 'view']">{{ hospital.municipalCorp?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="hospital.hospitalType">
+              <a [routerLink]="['/hospital-type', hospital.hospitalType?.id, 'view']">{{ hospital.hospitalType?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/hospital', hospital.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/hospital', hospital.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(hospital)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="hospitals && hospitals.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

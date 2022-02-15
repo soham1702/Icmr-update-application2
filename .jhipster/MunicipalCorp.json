@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114625",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "municipal_corp",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "MunicipalCorp",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "municipalCorp",
+      "relationshipName": "district",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

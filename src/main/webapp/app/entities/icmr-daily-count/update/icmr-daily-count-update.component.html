@@ -1,0 +1,183 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-icmr-daily-count-heading"
+        data-cy="ICMRDailyCountCreateUpdateHeading"
+        jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.home.createOrEditLabel"
+      >
+        Create or edit a ICMR Daily Count
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.totalSamplesTested"
+            for="field_totalSamplesTested"
+            >Total Samples Tested</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalSamplesTested"
+            id="field_totalSamplesTested"
+            data-cy="totalSamplesTested"
+            formControlName="totalSamplesTested"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.totalNegative" for="field_totalNegative"
+            >Total Negative</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalNegative"
+            id="field_totalNegative"
+            data-cy="totalNegative"
+            formControlName="totalNegative"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.totalPositive" for="field_totalPositive"
+            >Total Positive</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalPositive"
+            id="field_totalPositive"
+            data-cy="totalPositive"
+            formControlName="totalPositive"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.currentPreviousMonthTest"
+            for="field_currentPreviousMonthTest"
+            >Current Previous Month Test</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="currentPreviousMonthTest"
+            id="field_currentPreviousMonthTest"
+            data-cy="currentPreviousMonthTest"
+            formControlName="currentPreviousMonthTest"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.districtId" for="field_districtId"
+            >District Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="districtId"
+            id="field_districtId"
+            data-cy="districtId"
+            formControlName="districtId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.remarks" for="field_remarks"
+            >Remarks</label
+          >
+          <input type="text" class="form-control" name="remarks" id="field_remarks" data-cy="remarks" formControlName="remarks" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.editedOn" for="field_editedOn"
+            >Edited On</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_editedOn"
+              data-cy="editedOn"
+              type="datetime-local"
+              class="form-control"
+              name="editedOn"
+              formControlName="editedOn"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.updatedDate" for="field_updatedDate"
+            >Updated Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.freeField1" for="field_freeField1"
+            >Free Field 1</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField1"
+            id="field_freeField1"
+            data-cy="freeField1"
+            formControlName="freeField1"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.iCMRDailyCount.freeField2" for="field_freeField2"
+            >Free Field 2</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField2"
+            id="field_freeField2"
+            data-cy="freeField2"
+            formControlName="freeField2"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

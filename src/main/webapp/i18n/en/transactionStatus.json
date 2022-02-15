@@ -1,0 +1,11 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "TransactionStatus": {
+      "null": "",
+      "OPEN": "Open",
+      "TRANSIT": "Transit",
+      "CANCELLED": "Cancelled",
+      "RECEIVED": "Received"
+    }
+  }
+}

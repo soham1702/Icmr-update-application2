@@ -1,0 +1,27 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "inventoryType": {
+      "home": {
+        "title": "Inventory Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Inventory Type",
+        "createOrEditLabel": "Create or edit a Inventory Type",
+        "notFound": "No Inventory Types found"
+      },
+      "created": "A new Inventory Type is created with identifier {{ param }}",
+      "updated": "A Inventory Type is updated with identifier {{ param }}",
+      "deleted": "A Inventory Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Inventory Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventory Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "deleted": "Deleted",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By"
+    }
+  }
+}

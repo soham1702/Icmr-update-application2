@@ -1,0 +1,28 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "bedType": {
+      "home": {
+        "title": "Bed Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bed Type",
+        "createOrEditLabel": "Create or edit a Bed Type",
+        "notFound": "No Bed Types found"
+      },
+      "created": "A new Bed Type is created with identifier {{ param }}",
+      "updated": "A Bed Type is updated with identifier {{ param }}",
+      "deleted": "A Bed Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bed Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Bed Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "perDayOX": "Per Day OX",
+      "deleted": "Deleted",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By"
+    }
+  }
+}

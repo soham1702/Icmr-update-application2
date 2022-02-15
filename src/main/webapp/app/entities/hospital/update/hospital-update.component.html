@@ -1,0 +1,394 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-hospital-heading"
+        data-cy="HospitalCreateUpdateHeading"
+        jhiTranslate="icmrDailyCountUpdation2App.hospital.home.createOrEditLabel"
+      >
+        Create or edit a Hospital
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.category" for="field_category"
+            >Category</label
+          >
+          <select class="form-control" name="category" formControlName="category" id="field_category" data-cy="category">
+            <option [ngValue]="null">{{ 'icmrDailyCountUpdation2App.HospitalCategory.null' | translate }}</option>
+            <option *ngFor="let hospitalCategory of hospitalCategoryValues" [value]="hospitalCategory">
+              {{ 'icmrDailyCountUpdation2App.HospitalCategory.' + hospitalCategory | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('category')!.invalid && (editForm.get('category')!.dirty || editForm.get('category')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('category')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.subCategory" for="field_subCategory"
+            >Sub Category</label
+          >
+          <select class="form-control" name="subCategory" formControlName="subCategory" id="field_subCategory" data-cy="subCategory">
+            <option [ngValue]="null">{{ 'icmrDailyCountUpdation2App.HospitalSubCategory.null' | translate }}</option>
+            <option *ngFor="let hospitalSubCategory of hospitalSubCategoryValues" [value]="hospitalSubCategory">
+              {{ 'icmrDailyCountUpdation2App.HospitalSubCategory.' + hospitalSubCategory | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('subCategory')!.invalid && (editForm.get('subCategory')!.dirty || editForm.get('subCategory')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subCategory')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.contactNo" for="field_contactNo"
+            >Contact No</label
+          >
+          <input type="text" class="form-control" name="contactNo" id="field_contactNo" data-cy="contactNo" formControlName="contactNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.latitude" for="field_latitude"
+            >Latitude</label
+          >
+          <input type="text" class="form-control" name="latitude" id="field_latitude" data-cy="latitude" formControlName="latitude" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.longitude" for="field_longitude"
+            >Longitude</label
+          >
+          <input type="text" class="form-control" name="longitude" id="field_longitude" data-cy="longitude" formControlName="longitude" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.docCount" for="field_docCount"
+            >Doc Count</label
+          >
+          <input type="number" class="form-control" name="docCount" id="field_docCount" data-cy="docCount" formControlName="docCount" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.registrationNo" for="field_registrationNo"
+            >Registration No</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="registrationNo"
+            id="field_registrationNo"
+            data-cy="registrationNo"
+            formControlName="registrationNo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.address1" for="field_address1"
+            >Address 1</label
+          >
+          <input type="text" class="form-control" name="address1" id="field_address1" data-cy="address1" formControlName="address1" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.address2" for="field_address2"
+            >Address 2</label
+          >
+          <input type="text" class="form-control" name="address2" id="field_address2" data-cy="address2" formControlName="address2" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.area" for="field_area">Area</label>
+          <input type="text" class="form-control" name="area" id="field_area" data-cy="area" formControlName="area" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.pinCode" for="field_pinCode">Pin Code</label>
+          <input type="text" class="form-control" name="pinCode" id="field_pinCode" data-cy="pinCode" formControlName="pinCode" />
+          <div *ngIf="editForm.get('pinCode')!.invalid && (editForm.get('pinCode')!.dirty || editForm.get('pinCode')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pinCode')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.hospitalId" for="field_hospitalId"
+            >Hospital Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="hospitalId"
+            id="field_hospitalId"
+            data-cy="hospitalId"
+            formControlName="hospitalId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.odasFacilityId" for="field_odasFacilityId"
+            >Odas Facility Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="odasFacilityId"
+            id="field_odasFacilityId"
+            data-cy="odasFacilityId"
+            formControlName="odasFacilityId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.referenceNumber" for="field_referenceNumber"
+            >Reference Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="referenceNumber"
+            id="field_referenceNumber"
+            data-cy="referenceNumber"
+            formControlName="referenceNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.statusInd" for="field_statusInd"
+            >Status Ind</label
+          >
+          <select class="form-control" name="statusInd" formControlName="statusInd" id="field_statusInd" data-cy="statusInd">
+            <option [ngValue]="null">{{ 'icmrDailyCountUpdation2App.StatusInd.null' | translate }}</option>
+            <option *ngFor="let statusInd of statusIndValues" [value]="statusInd">
+              {{ 'icmrDailyCountUpdation2App.StatusInd.' + statusInd | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModified"
+              data-cy="lastModified"
+              type="datetime-local"
+              class="form-control"
+              name="lastModified"
+              formControlName="lastModified"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.state" for="field_state">State</label>
+          <select class="form-control" id="field_state" data-cy="state" name="state" formControlName="state">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="stateOption.id === editForm.get('state')!.value?.id ? editForm.get('state')!.value : stateOption"
+              *ngFor="let stateOption of statesSharedCollection; trackBy: trackStateById"
+            >
+              {{ stateOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.district" for="field_district"
+            >District</label
+          >
+          <select class="form-control" id="field_district" data-cy="district" name="district" formControlName="district">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="districtOption.id === editForm.get('district')!.value?.id ? editForm.get('district')!.value : districtOption"
+              *ngFor="let districtOption of districtsSharedCollection; trackBy: trackDistrictById"
+            >
+              {{ districtOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.taluka" for="field_taluka">Taluka</label>
+          <select class="form-control" id="field_taluka" data-cy="taluka" name="taluka" formControlName="taluka">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="talukaOption.id === editForm.get('taluka')!.value?.id ? editForm.get('taluka')!.value : talukaOption"
+              *ngFor="let talukaOption of talukasSharedCollection; trackBy: trackTalukaById"
+            >
+              {{ talukaOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.city" for="field_city">City</label>
+          <select class="form-control" id="field_city" data-cy="city" name="city" formControlName="city">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cityOption.id === editForm.get('city')!.value?.id ? editForm.get('city')!.value : cityOption"
+              *ngFor="let cityOption of citiesSharedCollection; trackBy: trackCityById"
+            >
+              {{ cityOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.municipalCorp" for="field_municipalCorp"
+            >Municipal Corp</label
+          >
+          <select
+            class="form-control"
+            id="field_municipalCorp"
+            data-cy="municipalCorp"
+            name="municipalCorp"
+            formControlName="municipalCorp"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                municipalCorpOption.id === editForm.get('municipalCorp')!.value?.id
+                  ? editForm.get('municipalCorp')!.value
+                  : municipalCorpOption
+              "
+              *ngFor="let municipalCorpOption of municipalCorpsSharedCollection; trackBy: trackMunicipalCorpById"
+            >
+              {{ municipalCorpOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.hospital.hospitalType" for="field_hospitalType"
+            >Hospital Type</label
+          >
+          <select class="form-control" id="field_hospitalType" data-cy="hospitalType" name="hospitalType" formControlName="hospitalType">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                hospitalTypeOption.id === editForm.get('hospitalType')!.value?.id ? editForm.get('hospitalType')!.value : hospitalTypeOption
+              "
+              *ngFor="let hospitalTypeOption of hospitalTypesSharedCollection; trackBy: trackHospitalTypeById"
+            >
+              {{ hospitalTypeOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="icmrDailyCountUpdation2App.hospital.supplier" for="field_suppliers">Supplier</label>
+          <select class="form-control" id="field_suppliers" data-cy="supplier" multiple name="suppliers" formControlName="suppliers">
+            <option
+              [ngValue]="getSelectedSupplier(supplierOption, editForm.get('suppliers')!.value)"
+              *ngFor="let supplierOption of suppliersSharedCollection; trackBy: trackSupplierById"
+            >
+              {{ supplierOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

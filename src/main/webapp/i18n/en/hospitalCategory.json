@@ -1,0 +1,10 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "HospitalCategory": {
+      "null": "",
+      "CENTRAL": "CentralMinistry",
+      "GOVT": "Govt",
+      "PRIVATE": "Private"
+    }
+  }
+}

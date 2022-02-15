@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity AuditSystem.
+    -->
+    <changeSet id="20220215114646-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="audit_type_id"
+                                 baseTableName="audit_system"
+                                 constraintName="fk_audit_system__audit_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="audit_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="hospital_id"
+                                 baseTableName="audit_system"
+                                 constraintName="fk_audit_system__hospital_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hospital"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="audit_system"
+                                 constraintName="fk_audit_system__supplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,149 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="hospital">
+      <h2 data-cy="hospitalDetailsHeading"><span jhiTranslate="icmrDailyCountUpdation2App.hospital.detail.title">Hospital</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ hospital.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.category">Category</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.HospitalCategory.' + hospital.category }}">{{ hospital.category }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.subCategory">Sub Category</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.HospitalSubCategory.' + hospital.subCategory }}">{{
+            hospital.subCategory
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.contactNo">Contact No</span></dt>
+        <dd>
+          <span>{{ hospital.contactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.latitude">Latitude</span></dt>
+        <dd>
+          <span>{{ hospital.latitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ hospital.longitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.docCount">Doc Count</span></dt>
+        <dd>
+          <span>{{ hospital.docCount }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.email">Email</span></dt>
+        <dd>
+          <span>{{ hospital.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.name">Name</span></dt>
+        <dd>
+          <span>{{ hospital.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.registrationNo">Registration No</span></dt>
+        <dd>
+          <span>{{ hospital.registrationNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.address1">Address 1</span></dt>
+        <dd>
+          <span>{{ hospital.address1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.address2">Address 2</span></dt>
+        <dd>
+          <span>{{ hospital.address2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.area">Area</span></dt>
+        <dd>
+          <span>{{ hospital.area }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.pinCode">Pin Code</span></dt>
+        <dd>
+          <span>{{ hospital.pinCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.hospitalId">Hospital Id</span></dt>
+        <dd>
+          <span>{{ hospital.hospitalId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.odasFacilityId">Odas Facility Id</span></dt>
+        <dd>
+          <span>{{ hospital.odasFacilityId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.referenceNumber">Reference Number</span></dt>
+        <dd>
+          <span>{{ hospital.referenceNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.statusInd">Status Ind</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.StatusInd.' + hospital.statusInd }}">{{ hospital.statusInd }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ hospital.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ hospital.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.state">State</span></dt>
+        <dd>
+          <div *ngIf="hospital.state">
+            <a [routerLink]="['/state', hospital.state?.id, 'view']">{{ hospital.state?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.district">District</span></dt>
+        <dd>
+          <div *ngIf="hospital.district">
+            <a [routerLink]="['/district', hospital.district?.id, 'view']">{{ hospital.district?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.taluka">Taluka</span></dt>
+        <dd>
+          <div *ngIf="hospital.taluka">
+            <a [routerLink]="['/taluka', hospital.taluka?.id, 'view']">{{ hospital.taluka?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.city">City</span></dt>
+        <dd>
+          <div *ngIf="hospital.city">
+            <a [routerLink]="['/city', hospital.city?.id, 'view']">{{ hospital.city?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.municipalCorp">Municipal Corp</span></dt>
+        <dd>
+          <div *ngIf="hospital.municipalCorp">
+            <a [routerLink]="['/municipal-corp', hospital.municipalCorp?.id, 'view']">{{ hospital.municipalCorp?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.hospitalType">Hospital Type</span></dt>
+        <dd>
+          <div *ngIf="hospital.hospitalType">
+            <a [routerLink]="['/hospital-type', hospital.hospitalType?.id, 'view']">{{ hospital.hospitalType?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.hospital.supplier">Supplier</span></dt>
+        <dd>
+          <span *ngFor="let supplier of hospital.suppliers; let last = last">
+            <a [routerLink]="['/supplier', supplier?.id, 'view']">{{ supplier.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/hospital', hospital.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

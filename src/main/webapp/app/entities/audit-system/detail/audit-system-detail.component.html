@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="auditSystem">
+      <h2 data-cy="auditSystemDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.detail.title">Audit System</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ auditSystem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.auditorName">Auditor Name</span></dt>
+        <dd>
+          <span>{{ auditSystem.auditorName }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.defectCount">Defect Count</span></dt>
+        <dd>
+          <span>{{ auditSystem.defectCount }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.defectFixCount">Defect Fix Count</span></dt>
+        <dd>
+          <span>{{ auditSystem.defectFixCount }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.inspectionDate">Inspection Date</span></dt>
+        <dd>
+          <span>{{ auditSystem.inspectionDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.remark">Remark</span></dt>
+        <dd>
+          <span>{{ auditSystem.remark }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.status">Status</span></dt>
+        <dd>
+          <span>{{ auditSystem.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ auditSystem.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ auditSystem.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.auditType">Audit Type</span></dt>
+        <dd>
+          <div *ngIf="auditSystem.auditType">
+            <a [routerLink]="['/audit-type', auditSystem.auditType?.id, 'view']">{{ auditSystem.auditType?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.hospital">Hospital</span></dt>
+        <dd>
+          <div *ngIf="auditSystem.hospital">
+            <a [routerLink]="['/hospital', auditSystem.hospital?.id, 'view']">{{ auditSystem.hospital?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditSystem.supplier">Supplier</span></dt>
+        <dd>
+          <div *ngIf="auditSystem.supplier">
+            <a [routerLink]="['/supplier', auditSystem.supplier?.id, 'view']">{{ auditSystem.supplier?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/audit-system', auditSystem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

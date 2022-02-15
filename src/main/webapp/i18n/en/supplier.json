@@ -1,0 +1,43 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "supplier": {
+      "home": {
+        "title": "Suppliers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Supplier",
+        "createOrEditLabel": "Create or edit a Supplier",
+        "notFound": "No Suppliers found"
+      },
+      "created": "A new Supplier is created with identifier {{ param }}",
+      "updated": "A Supplier is updated with identifier {{ param }}",
+      "deleted": "A Supplier is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Supplier {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplier"
+      },
+      "id": "ID",
+      "name": "Name",
+      "supplierType": "Supplier Type",
+      "contactNo": "Contact No",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "email": "Email",
+      "registrationNo": "Registration No",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "area": "Area",
+      "pinCode": "Pin Code",
+      "statusInd": "Status Ind",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "state": "State",
+      "district": "District",
+      "taluka": "Taluka",
+      "city": "City",
+      "inventoryType": "Inventory Type",
+      "hospital": "Hospital"
+    }
+  }
+}

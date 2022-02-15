@@ -1,0 +1,214 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patientInfo">
+      <h2 data-cy="patientInfoDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.detail.title">Patient Info</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ patientInfo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.icmrId">Icmr Id</span></dt>
+        <dd>
+          <span>{{ patientInfo.icmrId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.srfId">Srf Id</span></dt>
+        <dd>
+          <span>{{ patientInfo.srfId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.labName">Lab Name</span></dt>
+        <dd>
+          <span>{{ patientInfo.labName }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.patientID">Patient ID</span></dt>
+        <dd>
+          <span>{{ patientInfo.patientID }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.patientName">Patient Name</span></dt>
+        <dd>
+          <span>{{ patientInfo.patientName }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.age">Age</span></dt>
+        <dd>
+          <span>{{ patientInfo.age }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ageIn">Age In</span></dt>
+        <dd>
+          <span>{{ patientInfo.ageIn }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.gender">Gender</span></dt>
+        <dd>
+          <span>{{ patientInfo.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.nationality">Nationality</span></dt>
+        <dd>
+          <span>{{ patientInfo.nationality }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.address">Address</span></dt>
+        <dd>
+          <span>{{ patientInfo.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.villageTown">Village Town</span></dt>
+        <dd>
+          <span>{{ patientInfo.villageTown }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.pincode">Pincode</span></dt>
+        <dd>
+          <span>{{ patientInfo.pincode }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.patientCategory">Patient Category</span></dt>
+        <dd>
+          <span>{{ patientInfo.patientCategory }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.dateOfSampleCollection">Date Of Sample Collection</span></dt>
+        <dd>
+          <span>{{ patientInfo.dateOfSampleCollection | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.dateOfSampleReceived">Date Of Sample Received</span></dt>
+        <dd>
+          <span>{{ patientInfo.dateOfSampleReceived | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.sampleType">Sample Type</span></dt>
+        <dd>
+          <span>{{ patientInfo.sampleType }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.sampleId">Sample Id</span></dt>
+        <dd>
+          <span>{{ patientInfo.sampleId }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.underlyingMedicalCondition">Underlying Medical Condition</span></dt>
+        <dd>
+          <span>{{ patientInfo.underlyingMedicalCondition }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalized">Hospitalized</span></dt>
+        <dd>
+          <span>{{ patientInfo.hospitalized }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalName">Hospital Name</span></dt>
+        <dd>
+          <span>{{ patientInfo.hospitalName }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalizationDate">Hospitalization Date</span></dt>
+        <dd>
+          <span>{{ patientInfo.hospitalizationDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalState">Hospital State</span></dt>
+        <dd>
+          <span>{{ patientInfo.hospitalState }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalDistrict">Hospital District</span></dt>
+        <dd>
+          <span>{{ patientInfo.hospitalDistrict }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.symptomsStatus">Symptoms Status</span></dt>
+        <dd>
+          <span>{{ patientInfo.symptomsStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.symptoms">Symptoms</span></dt>
+        <dd>
+          <span>{{ patientInfo.symptoms }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.testingKitUsed">Testing Kit Used</span></dt>
+        <dd>
+          <span>{{ patientInfo.testingKitUsed }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.eGeneNGene">E Gene N Gene</span></dt>
+        <dd>
+          <span>{{ patientInfo.eGeneNGene }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ctValueOfEGeneNGene">Ct Value Of E Gene N Gene</span></dt>
+        <dd>
+          <span>{{ patientInfo.ctValueOfEGeneNGene }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.rdRpSGene">Rd Rp S Gene</span></dt>
+        <dd>
+          <span>{{ patientInfo.rdRpSGene }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ctValueOfRdRpSGene">Ct Value Of Rd Rp S Gene</span></dt>
+        <dd>
+          <span>{{ patientInfo.ctValueOfRdRpSGene }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.oRF1aORF1bNN2Gene">O RF 1 A ORF 1 B NN 2 Gene</span></dt>
+        <dd>
+          <span>{{ patientInfo.oRF1aORF1bNN2Gene }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ctValueOfORF1aORF1bNN2Gene"
+            >Ct Value Of ORF 1 A ORF 1 B NN 2 Gene</span
+          >
+        </dt>
+        <dd>
+          <span>{{ patientInfo.ctValueOfORF1aORF1bNN2Gene }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.repeatSample">Repeat Sample</span></dt>
+        <dd>
+          <span>{{ patientInfo.repeatSample }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.dateOfSampleTested">Date Of Sample Tested</span></dt>
+        <dd>
+          <span>{{ patientInfo.dateOfSampleTested | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.entryDate">Entry Date</span></dt>
+        <dd>
+          <span>{{ patientInfo.entryDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.confirmationDate">Confirmation Date</span></dt>
+        <dd>
+          <span>{{ patientInfo.confirmationDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.finalResultSample">Final Result Sample</span></dt>
+        <dd>
+          <span>{{ patientInfo.finalResultSample }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.remarks">Remarks</span></dt>
+        <dd>
+          <span>{{ patientInfo.remarks }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.editedOn">Edited On</span></dt>
+        <dd>
+          <span>{{ patientInfo.editedOn | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ccmsPullDate">Ccms Pull Date</span></dt>
+        <dd>
+          <span>{{ patientInfo.ccmsPullDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ patientInfo.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ patientInfo.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.state">State</span></dt>
+        <dd>
+          <div *ngIf="patientInfo.state">
+            <a [routerLink]="['/state', patientInfo.state?.id, 'view']">{{ patientInfo.state?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.patientInfo.district">District</span></dt>
+        <dd>
+          <div *ngIf="patientInfo.district">
+            <a [routerLink]="['/district', patientInfo.district?.id, 'view']">{{ patientInfo.district?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patient-info', patientInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

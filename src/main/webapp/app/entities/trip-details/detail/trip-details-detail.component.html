@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tripDetails">
+      <h2 data-cy="tripDetailsDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.detail.title">Trip Details</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tripDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.stockSent">Stock Sent</span></dt>
+        <dd>
+          <span>{{ tripDetails.stockSent }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.stockRec">Stock Rec</span></dt>
+        <dd>
+          <span>{{ tripDetails.stockRec }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.comment">Comment</span></dt>
+        <dd>
+          <span>{{ tripDetails.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.receiverComment">Receiver Comment</span></dt>
+        <dd>
+          <span>{{ tripDetails.receiverComment }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'icmrDailyCountUpdation2App.TransactionStatus.' + tripDetails.status }}">{{ tripDetails.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ tripDetails.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ tripDetails.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ tripDetails.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ tripDetails.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.supplier">Supplier</span></dt>
+        <dd>
+          <div *ngIf="tripDetails.supplier">
+            <a [routerLink]="['/supplier', tripDetails.supplier?.id, 'view']">{{ tripDetails.supplier?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.hospital">Hospital</span></dt>
+        <dd>
+          <div *ngIf="tripDetails.hospital">
+            <a [routerLink]="['/hospital', tripDetails.hospital?.id, 'view']">{{ tripDetails.hospital?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.transactions">Transactions</span></dt>
+        <dd>
+          <div *ngIf="tripDetails.transactions">
+            <a [routerLink]="['/transactions', tripDetails.transactions?.id, 'view']">{{ tripDetails.transactions?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.tripDetails.trip">Trip</span></dt>
+        <dd>
+          <div *ngIf="tripDetails.trip">
+            <a [routerLink]="['/trip', tripDetails.trip?.id, 'view']">{{ tripDetails.trip?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/trip-details', tripDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

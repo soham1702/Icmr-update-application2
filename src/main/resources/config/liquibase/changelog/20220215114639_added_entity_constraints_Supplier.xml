@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Supplier.
+    -->
+    <changeSet id="20220215114639-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="supplier"
+                                 constraintName="fk_supplier__state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="supplier"
+                                 constraintName="fk_supplier__district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="district"/>
+
+        <addForeignKeyConstraint baseColumnNames="taluka_id"
+                                 baseTableName="supplier"
+                                 constraintName="fk_supplier__taluka_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="taluka"/>
+
+        <addForeignKeyConstraint baseColumnNames="city_id"
+                                 baseTableName="supplier"
+                                 constraintName="fk_supplier__city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="city"/>
+
+        <addForeignKeyConstraint baseColumnNames="inventory_type_id"
+                                 baseTableName="supplier"
+                                 constraintName="fk_supplier__inventory_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="inventory_type"/>
+    </changeSet>
+</databaseChangeLog>
