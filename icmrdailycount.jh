@@ -1,0 +1,514 @@
+entity PatientInfo {
+	icmrId String required unique
+    srfId String
+    labName String
+    patientID String
+    patientName String
+    age String
+    ageIn String
+    gender String
+    contactNumber String,
+    contactNumberBelongsTo String,
+    nationality String,
+    aadharCardNumber String,
+    passportNumber String,
+    stateOfResidence String,
+    districtOfResidence String
+    address String
+    villageTown String
+    pincode String
+    patientCategory String
+    dateOfSampleCollection Instant
+    dateOfSampleReceived Instant
+    sampleType String
+    sampleId String
+    underlyingMedicalCondition String
+    hospitalized String
+    hospitalName String
+    hospitalizationDate Instant
+    hospitalState String
+    hospitalDistrict String
+    symptomsStatus String
+    symptoms String
+    testingKitUsed String
+    eGeneNGene String
+    ctValueOfEGeneNGene String
+    rdRpSGene String
+    ctValueOfRdRpSGene String
+    oRF1aORF1bNN2Gene String
+    ctValueOfORF1aORF1bNN2Gene String
+    repeatSample String
+    dateOfSampleTested Instant
+    entryDate Instant
+    confirmationDate Instant
+    finalResultSample String
+    remarks String
+    editedOn Instant
+    updatedDate Instant
+}
+
+entity State {
+	name String required unique
+    deleted Boolean
+	lgdCode Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity Division {
+	name String required unique
+    deleted Boolean
+	lgdCode Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity District {
+	name String required unique
+    deleted Boolean
+	lgdCode Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity Taluka {
+	name String required
+    deleted Boolean
+	lgdCode Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity City {
+	name String required
+    deleted Boolean
+	lgdCode Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity MunicipalCorp {
+	name String required unique
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+
+entity UserAccess {
+    level AccessLevel
+    accessId Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+enum AccessLevel {
+    HOSPITAL(Hospital)
+	SUPPLIER (Supplier)
+    TALUKA(Taluka)
+    DISTRICT(District)
+    STATE(State)	
+	MUNCIPALCORP (MunicipalCorp)
+}
+
+entity SecurityUser {
+    firstName String
+    lastName String
+    designation String
+    login String required unique
+    passwordHash String required
+	email String unique
+    imageUrl String
+    activated Boolean required
+    langKey String
+    activationKey String
+    resetKey String
+    resetDate Instant
+	mobileNo String
+	oneTimePassword String
+	otpExpiryTime Instant
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity SecurityRole {
+	name String required unique
+	description String
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity SecurityPermission {
+	name String required unique
+	description String
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity HospitalType {
+	name String required unique
+    desciption String 
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity BedType {
+	name String required unique
+    perDayOX Long
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+
+
+entity InventoryType {
+	name String required unique
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+} 
+
+entity InventoryMaster {
+	name String required unique
+    description String
+    volume Double
+    unit String required
+	calulateVolume Double
+    dimensions String
+    subTypeInd String
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+enum HospitalCategory {
+    CENTRAL(CentralMinistry),
+    GOVT(Govt),
+    PRIVATE(Private)
+}
+
+enum HospitalSubCategory {
+    FREE(Free),
+    MPJAY(Mpjay),
+    CHARGEABLE(Chargeable)
+    TRUST(Trust)
+}
+
+enum StatusInd {
+    A(Active),
+    I(Inactive),
+    D(Deleted)
+}
+
+
+entity Hospital {
+    category HospitalCategory required
+    subCategory HospitalSubCategory required
+	contactNo String
+    latitude String
+    longitude String
+	docCount Integer
+	email String
+	name String required
+	registrationNo String
+    address1 String
+	address2 String
+	area String
+	pinCode String required
+    hospitalId Long
+    odasFacilityId String
+    referenceNumber String
+    statusInd StatusInd
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+
+entity BedInventory {
+	bedCount Long required
+    occupied Long required
+    onCylinder Long
+    onLMO Long
+    onConcentrators Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity BedTransactions {
+    occupied Long required
+    onCylinder Long
+    onLMO Long
+    onConcentrators Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+
+entity Inventory {
+	stock Long required
+    capcity Long
+    installedCapcity Long
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity InventoryUsed {
+	stock Long
+    capcity Long
+    comment String
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+
+entity Supplier {
+	name String required
+	supplierType SupplierType required
+	contactNo String
+    latitude String
+    longitude String
+	email String
+	registrationNo String
+    address1 String
+	address2 String
+	area String
+	pinCode String required
+    statusInd StatusInd
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+enum SupplierType {
+    REFILLER(Refiller)
+    MANUFACTURER(Manufacturer)
+	DEALER(Dealer)
+	DISTRIBUTOR(Distributor)
+    INDUSTRY(Industry)
+}
+
+
+entity Transactions {
+	stockReq Long required
+	stockProvided Long 
+	status TransactionStatus required
+	comment String
+	lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity Trip {
+	trackingNo String required
+	mobaId Long required
+    numberPlate String required
+    stock Long required
+    status TransactionStatus required
+    createdDate Instant required
+    createdBy String required
+	lastModified Instant
+	comment String
+	lastModifiedBy String
+}
+
+entity TripDetails {
+    stockSent Long required
+    stockRec Long
+    comment String
+    receiverComment String
+    status TransactionStatus required
+    createdDate Instant required
+    createdBy String required
+	lastModified Instant
+	lastModifiedBy String
+}
+
+
+entity ContactType {
+	name String required unique
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity Contact {
+	name String required
+	contactNo String
+	email String
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity AuditType {
+	name String required unique
+    deleted Boolean
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity AuditSystem {
+	auditorName String required
+    defectCount Long
+    defectFixCount Long
+    inspectionDate Instant required
+    remark String
+    status String
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+enum TransactionStatus {
+    OPEN(Open),
+    TRANSIT(Transit),
+    CANCELLED(Cancelled),
+    RECEIVED(Received)
+}
+
+
+entity PatientInfo {
+	icmrId String required unique
+    srfId String
+    labName String
+    patientID String
+    patientName String
+    age String
+    ageIn String
+    gender String
+    nationality String,
+    address String
+    villageTown String
+    pincode String
+    patientCategory String
+    dateOfSampleCollection Instant
+    dateOfSampleReceived Instant
+    sampleType String
+    sampleId String
+    underlyingMedicalCondition String
+    hospitalized String
+    hospitalName String
+    hospitalizationDate Instant
+    hospitalState String
+    hospitalDistrict String
+    symptomsStatus String
+    symptoms String
+    testingKitUsed String
+    eGeneNGene String
+    ctValueOfEGeneNGene String
+    rdRpSGene String
+    ctValueOfRdRpSGene String
+    oRF1aORF1bNN2Gene String
+    ctValueOfORF1aORF1bNN2Gene String
+    repeatSample String
+    dateOfSampleTested Instant
+    entryDate Instant
+    confirmationDate Instant
+    finalResultSample String
+    remarks String
+    editedOn Instant
+    ccmsPullDate Instant required
+    lastModified Instant required
+	lastModifiedBy String required
+}
+
+entity ICMRDailyCount{
+	totalSamplesTested Long 
+    totalNegative Long
+    totalPositive Long
+    currentPreviousMonthTest Long
+    districtId Long
+    remarks String
+    editedOn Instant
+    updatedDate Instant
+    freeField1 String
+    freeField2 String
+
+}
+
+relationship ManyToOne {
+	 District{state(name)} to  State
+     Taluka{district(name)} to District
+     City{taluka(name)} to Taluka
+     District{division(name)} to  Division
+	 MunicipalCorp{district(name)} to District
+}
+relationship ManyToOne {
+     Hospital{state(name)} to State
+	 Hospital{district(name)} to District
+	 Hospital{taluka(name)} to Taluka
+     Hospital{city(name)} to City
+     Hospital{municipalCorp(name)} to MunicipalCorp
+}
+relationship ManyToOne {
+     Supplier{state(name)} to State
+	 Supplier{district(name)} to District
+	 Supplier{taluka(name)} to Taluka
+     Supplier{city(name)} to City
+     Supplier{inventoryType(name)} to InventoryType
+}
+relationship ManyToOne {  
+     Hospital{hospitalType(name)} to HospitalType     
+     BedInventory{bedType(name)} to BedType
+     BedInventory{hospital(name)} to Hospital     
+     BedTransactions{bedType(name)} to BedType
+     BedTransactions{hospital(name)} to Hospital
+}
+     
+relationship ManyToOne {     
+     UserAccess{securityUser(login)} to SecurityUser     
+     InventoryMaster{inventoryType(name)} to InventoryType
+     Inventory{inventoryMaster(name)} to InventoryMaster
+     InventoryUsed{inventory} to Inventory
+     Transactions{supplier(name)} to Supplier
+	 Transactions{inventory} to Inventory
+     Inventory{supplier(name)} to Supplier
+     Inventory{hospital(name)} to Hospital
+}
+
+relationship ManyToMany {
+  SecurityRole{securityPermission(name)} to SecurityPermission{securityRole(name)},
+  SecurityUser{securityPermission(name)} to SecurityPermission{securityUser(login)},
+  SecurityUser{securityRole(name)} to SecurityRole{securityUser(login)}
+  Hospital{supplier(name)} to Supplier{hospital(name)}
+}
+
+relationship OneToMany {
+	 Trip{tripDetails} to TripDetails{trip} 
+}
+
+relationship ManyToOne {
+	 Trip{supplier(name)} to Supplier
+     TripDetails{supplier(name)} to Supplier
+     TripDetails{hospital(name)} to Hospital	 
+	 TripDetails{transactions} to Transactions
+}
+
+relationship ManyToOne {  
+     AuditSystem{auditType(name)} to AuditType
+     AuditSystem{hospital(name)} to Hospital
+     AuditSystem{supplier(name)} to Supplier
+}
+
+relationship ManyToOne {
+	 Contact{contactType(name)} to ContactType
+	 Contact{hospital(name)} to Hospital
+     Contact{supplier(name)} to Supplier
+}
+
+relationship ManyToOne {
+     PatientInfo{state(name)} to State
+	 PatientInfo{district(name)} to District
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceClass
+
+filter *
+// Set an angular suffix
+// angularSuffix * with tvg
