@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="auditType">
+      <h2 data-cy="auditTypeDetailsHeading"><span jhiTranslate="icmrDailyCountUpdation2App.auditType.detail.title">Audit Type</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ auditType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditType.name">Name</span></dt>
+        <dd>
+          <span>{{ auditType.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditType.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ auditType.deleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditType.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ auditType.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.auditType.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ auditType.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/audit-type', auditType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

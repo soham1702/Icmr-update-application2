@@ -1,0 +1,32 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "bedInventory": {
+      "home": {
+        "title": "Bed Inventories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bed Inventory",
+        "createOrEditLabel": "Create or edit a Bed Inventory",
+        "notFound": "No Bed Inventories found"
+      },
+      "created": "A new Bed Inventory is created with identifier {{ param }}",
+      "updated": "A Bed Inventory is updated with identifier {{ param }}",
+      "deleted": "A Bed Inventory is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bed Inventory {{ id }}?"
+      },
+      "detail": {
+        "title": "Bed Inventory"
+      },
+      "id": "ID",
+      "bedCount": "Bed Count",
+      "occupied": "Occupied",
+      "onCylinder": "On Cylinder",
+      "onLMO": "On LMO",
+      "onConcentrators": "On Concentrators",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "bedType": "Bed Type",
+      "hospital": "Hospital"
+    }
+  }
+}

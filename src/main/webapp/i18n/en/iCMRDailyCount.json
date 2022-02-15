@@ -1,0 +1,33 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "iCMRDailyCount": {
+      "home": {
+        "title": "ICMR Daily Counts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new ICMR Daily Count",
+        "createOrEditLabel": "Create or edit a ICMR Daily Count",
+        "notFound": "No ICMR Daily Counts found"
+      },
+      "created": "A new ICMR Daily Count is created with identifier {{ param }}",
+      "updated": "A ICMR Daily Count is updated with identifier {{ param }}",
+      "deleted": "A ICMR Daily Count is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete ICMR Daily Count {{ id }}?"
+      },
+      "detail": {
+        "title": "ICMR Daily Count"
+      },
+      "id": "ID",
+      "totalSamplesTested": "Total Samples Tested",
+      "totalNegative": "Total Negative",
+      "totalPositive": "Total Positive",
+      "currentPreviousMonthTest": "Current Previous Month Test",
+      "districtId": "District Id",
+      "remarks": "Remarks",
+      "editedOn": "Edited On",
+      "updatedDate": "Updated Date",
+      "freeField1": "Free Field 1",
+      "freeField2": "Free Field 2"
+    }
+  }
+}

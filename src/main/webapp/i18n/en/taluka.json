@@ -1,0 +1,29 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "taluka": {
+      "home": {
+        "title": "Talukas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Taluka",
+        "createOrEditLabel": "Create or edit a Taluka",
+        "notFound": "No Talukas found"
+      },
+      "created": "A new Taluka is created with identifier {{ param }}",
+      "updated": "A Taluka is updated with identifier {{ param }}",
+      "deleted": "A Taluka is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Taluka {{ id }}?"
+      },
+      "detail": {
+        "title": "Taluka"
+      },
+      "id": "ID",
+      "name": "Name",
+      "deleted": "Deleted",
+      "lgdCode": "Lgd Code",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "district": "District"
+    }
+  }
+}

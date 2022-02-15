@@ -1,0 +1,28 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "municipalCorp": {
+      "home": {
+        "title": "Municipal Corps",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Municipal Corp",
+        "createOrEditLabel": "Create or edit a Municipal Corp",
+        "notFound": "No Municipal Corps found"
+      },
+      "created": "A new Municipal Corp is created with identifier {{ param }}",
+      "updated": "A Municipal Corp is updated with identifier {{ param }}",
+      "deleted": "A Municipal Corp is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Municipal Corp {{ id }}?"
+      },
+      "detail": {
+        "title": "Municipal Corp"
+      },
+      "id": "ID",
+      "name": "Name",
+      "deleted": "Deleted",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "district": "District"
+    }
+  }
+}

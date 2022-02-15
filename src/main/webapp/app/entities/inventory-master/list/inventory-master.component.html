@@ -1,0 +1,146 @@
+<div>
+  <h2 id="page-heading" data-cy="InventoryMasterHeading">
+    <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.home.title">Inventory Masters</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-inventory-master"
+        [routerLink]="['/inventory-master/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.home.createLabel"> Create a new Inventory Master </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="inventoryMasters?.length === 0">
+    <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.home.notFound">No inventoryMasters found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="inventoryMasters && inventoryMasters.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="volume">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.volume">Volume</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="unit">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.unit">Unit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="calulateVolume">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.calulateVolume">Calulate Volume</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dimensions">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.dimensions">Dimensions</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="subTypeInd">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.subTypeInd">Sub Type Ind</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="deleted">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.deleted">Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.lastModified">Last Modified</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.lastModifiedBy">Last Modified By</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="inventoryType.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.inventoryType">Inventory Type</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inventoryMaster of inventoryMasters; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/inventory-master', inventoryMaster.id, 'view']">{{ inventoryMaster.id }}</a>
+          </td>
+          <td>{{ inventoryMaster.name }}</td>
+          <td>{{ inventoryMaster.description }}</td>
+          <td>{{ inventoryMaster.volume }}</td>
+          <td>{{ inventoryMaster.unit }}</td>
+          <td>{{ inventoryMaster.calulateVolume }}</td>
+          <td>{{ inventoryMaster.dimensions }}</td>
+          <td>{{ inventoryMaster.subTypeInd }}</td>
+          <td>{{ inventoryMaster.deleted }}</td>
+          <td>{{ inventoryMaster.lastModified | formatMediumDatetime }}</td>
+          <td>{{ inventoryMaster.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="inventoryMaster.inventoryType">
+              <a [routerLink]="['/inventory-type', inventoryMaster.inventoryType?.id, 'view']">{{ inventoryMaster.inventoryType?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/inventory-master', inventoryMaster.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/inventory-master', inventoryMaster.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(inventoryMaster)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="inventoryMasters && inventoryMasters.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="InventoryHeading">
+    <span jhiTranslate="icmrDailyCountUpdation2App.inventory.home.title">Inventories</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.inventory.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-inventory"
+        [routerLink]="['/inventory/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="icmrDailyCountUpdation2App.inventory.home.createLabel"> Create a new Inventory </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="inventories?.length === 0">
+    <span jhiTranslate="icmrDailyCountUpdation2App.inventory.home.notFound">No inventories found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="inventories && inventories.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="stock">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.stock">Stock</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="capcity">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.capcity">Capcity</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="installedCapcity">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.installedCapcity">Installed Capcity</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="inventoryMaster.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.inventoryMaster">Inventory Master</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplier.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.supplier">Supplier</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="hospital.name">
+            <span jhiTranslate="icmrDailyCountUpdation2App.inventory.hospital">Hospital</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inventory of inventories; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/inventory', inventory.id, 'view']">{{ inventory.id }}</a>
+          </td>
+          <td>{{ inventory.stock }}</td>
+          <td>{{ inventory.capcity }}</td>
+          <td>{{ inventory.installedCapcity }}</td>
+          <td>{{ inventory.lastModified | formatMediumDatetime }}</td>
+          <td>{{ inventory.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="inventory.inventoryMaster">
+              <a [routerLink]="['/inventory-master', inventory.inventoryMaster?.id, 'view']">{{ inventory.inventoryMaster?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="inventory.supplier">
+              <a [routerLink]="['/supplier', inventory.supplier?.id, 'view']">{{ inventory.supplier?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="inventory.hospital">
+              <a [routerLink]="['/hospital', inventory.hospital?.id, 'view']">{{ inventory.hospital?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/inventory', inventory.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/inventory', inventory.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(inventory)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="inventories && inventories.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

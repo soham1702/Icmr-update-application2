@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Inventory.
+    -->
+    <changeSet id="20220215114637-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="inventory_master_id"
+                                 baseTableName="inventory"
+                                 constraintName="fk_inventory__inventory_master_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="inventory_master"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="inventory"
+                                 constraintName="fk_inventory__supplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+
+        <addForeignKeyConstraint baseColumnNames="hospital_id"
+                                 baseTableName="inventory"
+                                 constraintName="fk_inventory__hospital_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hospital"/>
+    </changeSet>
+</databaseChangeLog>

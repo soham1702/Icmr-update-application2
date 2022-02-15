@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="inventory">
+      <h2 data-cy="inventoryDetailsHeading"><span jhiTranslate="icmrDailyCountUpdation2App.inventory.detail.title">Inventory</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ inventory.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.stock">Stock</span></dt>
+        <dd>
+          <span>{{ inventory.stock }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.capcity">Capcity</span></dt>
+        <dd>
+          <span>{{ inventory.capcity }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.installedCapcity">Installed Capcity</span></dt>
+        <dd>
+          <span>{{ inventory.installedCapcity }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ inventory.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ inventory.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.inventoryMaster">Inventory Master</span></dt>
+        <dd>
+          <div *ngIf="inventory.inventoryMaster">
+            <a [routerLink]="['/inventory-master', inventory.inventoryMaster?.id, 'view']">{{ inventory.inventoryMaster?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.supplier">Supplier</span></dt>
+        <dd>
+          <div *ngIf="inventory.supplier">
+            <a [routerLink]="['/supplier', inventory.supplier?.id, 'view']">{{ inventory.supplier?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventory.hospital">Hospital</span></dt>
+        <dd>
+          <div *ngIf="inventory.hospital">
+            <a [routerLink]="['/hospital', inventory.hospital?.id, 'view']">{{ inventory.hospital?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/inventory', inventory.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

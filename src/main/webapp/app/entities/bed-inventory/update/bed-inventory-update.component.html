@@ -1,0 +1,212 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bed-inventory-heading"
+        data-cy="BedInventoryCreateUpdateHeading"
+        jhiTranslate="icmrDailyCountUpdation2App.bedInventory.home.createOrEditLabel"
+      >
+        Create or edit a Bed Inventory
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.bedCount" for="field_bedCount"
+            >Bed Count</label
+          >
+          <input type="number" class="form-control" name="bedCount" id="field_bedCount" data-cy="bedCount" formControlName="bedCount" />
+          <div *ngIf="editForm.get('bedCount')!.invalid && (editForm.get('bedCount')!.dirty || editForm.get('bedCount')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bedCount')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('bedCount')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.occupied" for="field_occupied"
+            >Occupied</label
+          >
+          <input type="number" class="form-control" name="occupied" id="field_occupied" data-cy="occupied" formControlName="occupied" />
+          <div *ngIf="editForm.get('occupied')!.invalid && (editForm.get('occupied')!.dirty || editForm.get('occupied')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('occupied')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('occupied')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.onCylinder" for="field_onCylinder"
+            >On Cylinder</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="onCylinder"
+            id="field_onCylinder"
+            data-cy="onCylinder"
+            formControlName="onCylinder"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.onLMO" for="field_onLMO">On LMO</label>
+          <input type="number" class="form-control" name="onLMO" id="field_onLMO" data-cy="onLMO" formControlName="onLMO" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.bedInventory.onConcentrators"
+            for="field_onConcentrators"
+            >On Concentrators</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="onConcentrators"
+            id="field_onConcentrators"
+            data-cy="onConcentrators"
+            formControlName="onConcentrators"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModified"
+              data-cy="lastModified"
+              type="datetime-local"
+              class="form-control"
+              name="lastModified"
+              formControlName="lastModified"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.bedType" for="field_bedType"
+            >Bed Type</label
+          >
+          <select class="form-control" id="field_bedType" data-cy="bedType" name="bedType" formControlName="bedType">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="bedTypeOption.id === editForm.get('bedType')!.value?.id ? editForm.get('bedType')!.value : bedTypeOption"
+              *ngFor="let bedTypeOption of bedTypesSharedCollection; trackBy: trackBedTypeById"
+            >
+              {{ bedTypeOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.bedInventory.hospital" for="field_hospital"
+            >Hospital</label
+          >
+          <select class="form-control" id="field_hospital" data-cy="hospital" name="hospital" formControlName="hospital">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="hospitalOption.id === editForm.get('hospital')!.value?.id ? editForm.get('hospital')!.value : hospitalOption"
+              *ngFor="let hospitalOption of hospitalsSharedCollection; trackBy: trackHospitalById"
+            >
+              {{ hospitalOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

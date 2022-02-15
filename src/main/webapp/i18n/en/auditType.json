@@ -1,0 +1,27 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "auditType": {
+      "home": {
+        "title": "Audit Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Audit Type",
+        "createOrEditLabel": "Create or edit a Audit Type",
+        "notFound": "No Audit Types found"
+      },
+      "created": "A new Audit Type is created with identifier {{ param }}",
+      "updated": "A Audit Type is updated with identifier {{ param }}",
+      "deleted": "A Audit Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Audit Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Audit Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "deleted": "Deleted",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By"
+    }
+  }
+}

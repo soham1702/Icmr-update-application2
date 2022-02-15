@@ -1,0 +1,31 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "bedTransactions": {
+      "home": {
+        "title": "Bed Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bed Transactions",
+        "createOrEditLabel": "Create or edit a Bed Transactions",
+        "notFound": "No Bed Transactions found"
+      },
+      "created": "A new Bed Transactions is created with identifier {{ param }}",
+      "updated": "A Bed Transactions is updated with identifier {{ param }}",
+      "deleted": "A Bed Transactions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bed Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Bed Transactions"
+      },
+      "id": "ID",
+      "occupied": "Occupied",
+      "onCylinder": "On Cylinder",
+      "onLMO": "On LMO",
+      "onConcentrators": "On Concentrators",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "bedType": "Bed Type",
+      "hospital": "Hospital"
+    }
+  }
+}

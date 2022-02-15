@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Hospital.
+    -->
+    <changeSet id="20220215114634-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="hospital"
+                                 constraintName="fk_hospital__state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="hospital"
+                                 constraintName="fk_hospital__district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="district"/>
+
+        <addForeignKeyConstraint baseColumnNames="taluka_id"
+                                 baseTableName="hospital"
+                                 constraintName="fk_hospital__taluka_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="taluka"/>
+
+        <addForeignKeyConstraint baseColumnNames="city_id"
+                                 baseTableName="hospital"
+                                 constraintName="fk_hospital__city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="city"/>
+
+        <addForeignKeyConstraint baseColumnNames="municipal_corp_id"
+                                 baseTableName="hospital"
+                                 constraintName="fk_hospital__municipal_corp_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="municipal_corp"/>
+
+        <addForeignKeyConstraint baseColumnNames="hospital_type_id"
+                                 baseTableName="hospital"
+                                 constraintName="fk_hospital__hospital_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hospital_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="hospital_id"
+                                 baseTableName="rel_hospital__supplier"
+                                 constraintName="fk_rel_hospital__supplier__hospital_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hospital"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="rel_hospital__supplier"
+                                 constraintName="fk_rel_hospital__supplier__supplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+    </changeSet>
+</databaseChangeLog>

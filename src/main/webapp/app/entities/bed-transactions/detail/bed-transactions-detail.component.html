@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bedTransactions">
+      <h2 data-cy="bedTransactionsDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.detail.title">Bed Transactions</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bedTransactions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.occupied">Occupied</span></dt>
+        <dd>
+          <span>{{ bedTransactions.occupied }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.onCylinder">On Cylinder</span></dt>
+        <dd>
+          <span>{{ bedTransactions.onCylinder }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.onLMO">On LMO</span></dt>
+        <dd>
+          <span>{{ bedTransactions.onLMO }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.onConcentrators">On Concentrators</span></dt>
+        <dd>
+          <span>{{ bedTransactions.onConcentrators }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ bedTransactions.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ bedTransactions.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.bedType">Bed Type</span></dt>
+        <dd>
+          <div *ngIf="bedTransactions.bedType">
+            <a [routerLink]="['/bed-type', bedTransactions.bedType?.id, 'view']">{{ bedTransactions.bedType?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.bedTransactions.hospital">Hospital</span></dt>
+        <dd>
+          <div *ngIf="bedTransactions.hospital">
+            <a [routerLink]="['/hospital', bedTransactions.hospital?.id, 'view']">{{ bedTransactions.hospital?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bed-transactions', bedTransactions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

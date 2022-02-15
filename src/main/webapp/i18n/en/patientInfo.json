@@ -1,0 +1,67 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "patientInfo": {
+      "home": {
+        "title": "Patient Infos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Patient Info",
+        "createOrEditLabel": "Create or edit a Patient Info",
+        "notFound": "No Patient Infos found"
+      },
+      "created": "A new Patient Info is created with identifier {{ param }}",
+      "updated": "A Patient Info is updated with identifier {{ param }}",
+      "deleted": "A Patient Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Patient Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Patient Info"
+      },
+      "id": "ID",
+      "icmrId": "Icmr Id",
+      "srfId": "Srf Id",
+      "labName": "Lab Name",
+      "patientID": "Patient ID",
+      "patientName": "Patient Name",
+      "age": "Age",
+      "ageIn": "Age In",
+      "gender": "Gender",
+      "nationality": "Nationality",
+      "address": "Address",
+      "villageTown": "Village Town",
+      "pincode": "Pincode",
+      "patientCategory": "Patient Category",
+      "dateOfSampleCollection": "Date Of Sample Collection",
+      "dateOfSampleReceived": "Date Of Sample Received",
+      "sampleType": "Sample Type",
+      "sampleId": "Sample Id",
+      "underlyingMedicalCondition": "Underlying Medical Condition",
+      "hospitalized": "Hospitalized",
+      "hospitalName": "Hospital Name",
+      "hospitalizationDate": "Hospitalization Date",
+      "hospitalState": "Hospital State",
+      "hospitalDistrict": "Hospital District",
+      "symptomsStatus": "Symptoms Status",
+      "symptoms": "Symptoms",
+      "testingKitUsed": "Testing Kit Used",
+      "eGeneNGene": "E Gene N Gene",
+      "ctValueOfEGeneNGene": "Ct Value Of E Gene N Gene",
+      "rdRpSGene": "Rd Rp S Gene",
+      "ctValueOfRdRpSGene": "Ct Value Of Rd Rp S Gene",
+      "oRF1aORF1bNN2Gene": "O RF 1 A ORF 1 B NN 2 Gene",
+      "ctValueOfORF1aORF1bNN2Gene": "Ct Value Of ORF 1 A ORF 1 B NN 2 Gene",
+      "repeatSample": "Repeat Sample",
+      "dateOfSampleTested": "Date Of Sample Tested",
+      "entryDate": "Entry Date",
+      "confirmationDate": "Confirmation Date",
+      "finalResultSample": "Final Result Sample",
+      "remarks": "Remarks",
+      "editedOn": "Edited On",
+      "ccmsPullDate": "Ccms Pull Date",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "state": "State",
+      "district": "District"
+    }
+  }
+}

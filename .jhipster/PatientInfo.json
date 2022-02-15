@@ -1,0 +1,203 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114619",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "patient_info",
+  "fields": [
+    {
+      "fieldName": "icmrId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "srfId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "labName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "patientID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "patientName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ageIn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "villageTown",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pincode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "patientCategory",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOfSampleCollection",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateOfSampleReceived",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "sampleType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sampleId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "underlyingMedicalCondition",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hospitalized",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hospitalName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hospitalizationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "hospitalState",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hospitalDistrict",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "symptomsStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "symptoms",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "testingKitUsed",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eGeneNGene",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ctValueOfEGeneNGene",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rdRpSGene",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ctValueOfRdRpSGene",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "oRF1aORF1bNN2Gene",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ctValueOfORF1aORF1bNN2Gene",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "repeatSample",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOfSampleTested",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "entryDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "confirmationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "finalResultSample",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "editedOn",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "ccmsPullDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "PatientInfo",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "state",
+      "otherEntityRelationshipName": "patientInfo",
+      "relationshipName": "state",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "patientInfo",
+      "relationshipName": "district",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

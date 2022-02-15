@@ -1,0 +1,34 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "inventoryMaster": {
+      "home": {
+        "title": "Inventory Masters",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Inventory Master",
+        "createOrEditLabel": "Create or edit a Inventory Master",
+        "notFound": "No Inventory Masters found"
+      },
+      "created": "A new Inventory Master is created with identifier {{ param }}",
+      "updated": "A Inventory Master is updated with identifier {{ param }}",
+      "deleted": "A Inventory Master is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Inventory Master {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventory Master"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "volume": "Volume",
+      "unit": "Unit",
+      "calulateVolume": "Calulate Volume",
+      "dimensions": "Dimensions",
+      "subTypeInd": "Sub Type Ind",
+      "deleted": "Deleted",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "inventoryType": "Inventory Type"
+    }
+  }
+}

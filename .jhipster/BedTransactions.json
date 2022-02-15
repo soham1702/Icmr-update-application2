@@ -1,0 +1,58 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114636",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bed_transactions",
+  "fields": [
+    {
+      "fieldName": "occupied",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "onCylinder",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "onLMO",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "onConcentrators",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "BedTransactions",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "bedType",
+      "otherEntityRelationshipName": "bedTransactions",
+      "relationshipName": "bedType",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "bedTransactions",
+      "relationshipName": "hospital",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114638",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "inventory_used",
+  "fields": [
+    {
+      "fieldName": "stock",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "capcity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "InventoryUsed",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "inventory",
+      "otherEntityRelationshipName": "inventoryUsed",
+      "relationshipName": "inventory",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

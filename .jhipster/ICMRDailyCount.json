@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20220215114647",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "icmr_daily_count",
+  "fields": [
+    {
+      "fieldName": "totalSamplesTested",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "totalNegative",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "totalPositive",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "currentPreviousMonthTest",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "districtId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "remarks",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "editedOn",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "freeField1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField2",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ICMRDailyCount",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

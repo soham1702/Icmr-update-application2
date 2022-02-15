@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="inventoryMaster">
+      <h2 data-cy="inventoryMasterDetailsHeading">
+        <span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.detail.title">Inventory Master</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.name">Name</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.description">Description</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.volume">Volume</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.volume }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.unit">Unit</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.unit }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.calulateVolume">Calulate Volume</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.calulateVolume }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.dimensions">Dimensions</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.dimensions }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.subTypeInd">Sub Type Ind</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.subTypeInd }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.deleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.lastModified | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ inventoryMaster.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="icmrDailyCountUpdation2App.inventoryMaster.inventoryType">Inventory Type</span></dt>
+        <dd>
+          <div *ngIf="inventoryMaster.inventoryType">
+            <a [routerLink]="['/inventory-type', inventoryMaster.inventoryType?.id, 'view']">{{ inventoryMaster.inventoryType?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/inventory-master', inventoryMaster.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

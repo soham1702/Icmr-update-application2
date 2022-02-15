@@ -1,0 +1,28 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "hospitalType": {
+      "home": {
+        "title": "Hospital Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Hospital Type",
+        "createOrEditLabel": "Create or edit a Hospital Type",
+        "notFound": "No Hospital Types found"
+      },
+      "created": "A new Hospital Type is created with identifier {{ param }}",
+      "updated": "A Hospital Type is updated with identifier {{ param }}",
+      "deleted": "A Hospital Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Hospital Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Hospital Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "desciption": "Desciption",
+      "deleted": "Deleted",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By"
+    }
+  }
+}

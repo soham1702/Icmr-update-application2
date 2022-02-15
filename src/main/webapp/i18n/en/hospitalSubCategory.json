@@ -1,0 +1,11 @@
+{
+  "icmrDailyCountUpdation2App": {
+    "HospitalSubCategory": {
+      "null": "",
+      "FREE": "Free",
+      "MPJAY": "Mpjay",
+      "CHARGEABLE": "Chargeable",
+      "TRUST": "Trust"
+    }
+  }
+}

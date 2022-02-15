@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity PatientInfo.
+    -->
+    <changeSet id="20220215114619-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="patient_info"
+                                 constraintName="fk_patient_info__state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="patient_info"
+                                 constraintName="fk_patient_info__district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="district"/>
+    </changeSet>
+</databaseChangeLog>

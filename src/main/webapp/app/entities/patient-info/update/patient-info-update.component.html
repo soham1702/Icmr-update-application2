@@ -1,0 +1,673 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-patient-info-heading"
+        data-cy="PatientInfoCreateUpdateHeading"
+        jhiTranslate="icmrDailyCountUpdation2App.patientInfo.home.createOrEditLabel"
+      >
+        Create or edit a Patient Info
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.icmrId" for="field_icmrId">Icmr Id</label>
+          <input type="text" class="form-control" name="icmrId" id="field_icmrId" data-cy="icmrId" formControlName="icmrId" />
+          <div *ngIf="editForm.get('icmrId')!.invalid && (editForm.get('icmrId')!.dirty || editForm.get('icmrId')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('icmrId')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.srfId" for="field_srfId">Srf Id</label>
+          <input type="text" class="form-control" name="srfId" id="field_srfId" data-cy="srfId" formControlName="srfId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.labName" for="field_labName"
+            >Lab Name</label
+          >
+          <input type="text" class="form-control" name="labName" id="field_labName" data-cy="labName" formControlName="labName" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.patientID" for="field_patientID"
+            >Patient ID</label
+          >
+          <input type="text" class="form-control" name="patientID" id="field_patientID" data-cy="patientID" formControlName="patientID" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.patientName" for="field_patientName"
+            >Patient Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="patientName"
+            id="field_patientName"
+            data-cy="patientName"
+            formControlName="patientName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.age" for="field_age">Age</label>
+          <input type="text" class="form-control" name="age" id="field_age" data-cy="age" formControlName="age" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ageIn" for="field_ageIn">Age In</label>
+          <input type="text" class="form-control" name="ageIn" id="field_ageIn" data-cy="ageIn" formControlName="ageIn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.gender" for="field_gender">Gender</label>
+          <input type="text" class="form-control" name="gender" id="field_gender" data-cy="gender" formControlName="gender" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.nationality" for="field_nationality"
+            >Nationality</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nationality"
+            id="field_nationality"
+            data-cy="nationality"
+            formControlName="nationality"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.address" for="field_address"
+            >Address</label
+          >
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.villageTown" for="field_villageTown"
+            >Village Town</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="villageTown"
+            id="field_villageTown"
+            data-cy="villageTown"
+            formControlName="villageTown"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.pincode" for="field_pincode"
+            >Pincode</label
+          >
+          <input type="text" class="form-control" name="pincode" id="field_pincode" data-cy="pincode" formControlName="pincode" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.patientCategory"
+            for="field_patientCategory"
+            >Patient Category</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="patientCategory"
+            id="field_patientCategory"
+            data-cy="patientCategory"
+            formControlName="patientCategory"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.dateOfSampleCollection"
+            for="field_dateOfSampleCollection"
+            >Date Of Sample Collection</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateOfSampleCollection"
+              data-cy="dateOfSampleCollection"
+              type="datetime-local"
+              class="form-control"
+              name="dateOfSampleCollection"
+              formControlName="dateOfSampleCollection"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.dateOfSampleReceived"
+            for="field_dateOfSampleReceived"
+            >Date Of Sample Received</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateOfSampleReceived"
+              data-cy="dateOfSampleReceived"
+              type="datetime-local"
+              class="form-control"
+              name="dateOfSampleReceived"
+              formControlName="dateOfSampleReceived"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.sampleType" for="field_sampleType"
+            >Sample Type</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="sampleType"
+            id="field_sampleType"
+            data-cy="sampleType"
+            formControlName="sampleType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.sampleId" for="field_sampleId"
+            >Sample Id</label
+          >
+          <input type="text" class="form-control" name="sampleId" id="field_sampleId" data-cy="sampleId" formControlName="sampleId" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.underlyingMedicalCondition"
+            for="field_underlyingMedicalCondition"
+            >Underlying Medical Condition</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="underlyingMedicalCondition"
+            id="field_underlyingMedicalCondition"
+            data-cy="underlyingMedicalCondition"
+            formControlName="underlyingMedicalCondition"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalized" for="field_hospitalized"
+            >Hospitalized</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hospitalized"
+            id="field_hospitalized"
+            data-cy="hospitalized"
+            formControlName="hospitalized"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalName" for="field_hospitalName"
+            >Hospital Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hospitalName"
+            id="field_hospitalName"
+            data-cy="hospitalName"
+            formControlName="hospitalName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalizationDate"
+            for="field_hospitalizationDate"
+            >Hospitalization Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_hospitalizationDate"
+              data-cy="hospitalizationDate"
+              type="datetime-local"
+              class="form-control"
+              name="hospitalizationDate"
+              formControlName="hospitalizationDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalState" for="field_hospitalState"
+            >Hospital State</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hospitalState"
+            id="field_hospitalState"
+            data-cy="hospitalState"
+            formControlName="hospitalState"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.hospitalDistrict"
+            for="field_hospitalDistrict"
+            >Hospital District</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hospitalDistrict"
+            id="field_hospitalDistrict"
+            data-cy="hospitalDistrict"
+            formControlName="hospitalDistrict"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.symptomsStatus" for="field_symptomsStatus"
+            >Symptoms Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="symptomsStatus"
+            id="field_symptomsStatus"
+            data-cy="symptomsStatus"
+            formControlName="symptomsStatus"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.symptoms" for="field_symptoms"
+            >Symptoms</label
+          >
+          <input type="text" class="form-control" name="symptoms" id="field_symptoms" data-cy="symptoms" formControlName="symptoms" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.testingKitUsed" for="field_testingKitUsed"
+            >Testing Kit Used</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="testingKitUsed"
+            id="field_testingKitUsed"
+            data-cy="testingKitUsed"
+            formControlName="testingKitUsed"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.eGeneNGene" for="field_eGeneNGene"
+            >E Gene N Gene</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="eGeneNGene"
+            id="field_eGeneNGene"
+            data-cy="eGeneNGene"
+            formControlName="eGeneNGene"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ctValueOfEGeneNGene"
+            for="field_ctValueOfEGeneNGene"
+            >Ct Value Of E Gene N Gene</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="ctValueOfEGeneNGene"
+            id="field_ctValueOfEGeneNGene"
+            data-cy="ctValueOfEGeneNGene"
+            formControlName="ctValueOfEGeneNGene"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.rdRpSGene" for="field_rdRpSGene"
+            >Rd Rp S Gene</label
+          >
+          <input type="text" class="form-control" name="rdRpSGene" id="field_rdRpSGene" data-cy="rdRpSGene" formControlName="rdRpSGene" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ctValueOfRdRpSGene"
+            for="field_ctValueOfRdRpSGene"
+            >Ct Value Of Rd Rp S Gene</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="ctValueOfRdRpSGene"
+            id="field_ctValueOfRdRpSGene"
+            data-cy="ctValueOfRdRpSGene"
+            formControlName="ctValueOfRdRpSGene"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.oRF1aORF1bNN2Gene"
+            for="field_oRF1aORF1bNN2Gene"
+            >O RF 1 A ORF 1 B NN 2 Gene</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="oRF1aORF1bNN2Gene"
+            id="field_oRF1aORF1bNN2Gene"
+            data-cy="oRF1aORF1bNN2Gene"
+            formControlName="oRF1aORF1bNN2Gene"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ctValueOfORF1aORF1bNN2Gene"
+            for="field_ctValueOfORF1aORF1bNN2Gene"
+            >Ct Value Of ORF 1 A ORF 1 B NN 2 Gene</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="ctValueOfORF1aORF1bNN2Gene"
+            id="field_ctValueOfORF1aORF1bNN2Gene"
+            data-cy="ctValueOfORF1aORF1bNN2Gene"
+            formControlName="ctValueOfORF1aORF1bNN2Gene"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.repeatSample" for="field_repeatSample"
+            >Repeat Sample</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="repeatSample"
+            id="field_repeatSample"
+            data-cy="repeatSample"
+            formControlName="repeatSample"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.dateOfSampleTested"
+            for="field_dateOfSampleTested"
+            >Date Of Sample Tested</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateOfSampleTested"
+              data-cy="dateOfSampleTested"
+              type="datetime-local"
+              class="form-control"
+              name="dateOfSampleTested"
+              formControlName="dateOfSampleTested"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.entryDate" for="field_entryDate"
+            >Entry Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_entryDate"
+              data-cy="entryDate"
+              type="datetime-local"
+              class="form-control"
+              name="entryDate"
+              formControlName="entryDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.confirmationDate"
+            for="field_confirmationDate"
+            >Confirmation Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_confirmationDate"
+              data-cy="confirmationDate"
+              type="datetime-local"
+              class="form-control"
+              name="confirmationDate"
+              formControlName="confirmationDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="icmrDailyCountUpdation2App.patientInfo.finalResultSample"
+            for="field_finalResultSample"
+            >Final Result Sample</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="finalResultSample"
+            id="field_finalResultSample"
+            data-cy="finalResultSample"
+            formControlName="finalResultSample"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.remarks" for="field_remarks"
+            >Remarks</label
+          >
+          <input type="text" class="form-control" name="remarks" id="field_remarks" data-cy="remarks" formControlName="remarks" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.editedOn" for="field_editedOn"
+            >Edited On</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_editedOn"
+              data-cy="editedOn"
+              type="datetime-local"
+              class="form-control"
+              name="editedOn"
+              formControlName="editedOn"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.ccmsPullDate" for="field_ccmsPullDate"
+            >Ccms Pull Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_ccmsPullDate"
+              data-cy="ccmsPullDate"
+              type="datetime-local"
+              class="form-control"
+              name="ccmsPullDate"
+              formControlName="ccmsPullDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('ccmsPullDate')!.invalid && (editForm.get('ccmsPullDate')!.dirty || editForm.get('ccmsPullDate')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ccmsPullDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ccmsPullDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModified"
+              data-cy="lastModified"
+              type="datetime-local"
+              class="form-control"
+              name="lastModified"
+              formControlName="lastModified"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.state" for="field_state">State</label>
+          <select class="form-control" id="field_state" data-cy="state" name="state" formControlName="state">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="stateOption.id === editForm.get('state')!.value?.id ? editForm.get('state')!.value : stateOption"
+              *ngFor="let stateOption of statesSharedCollection; trackBy: trackStateById"
+            >
+              {{ stateOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="icmrDailyCountUpdation2App.patientInfo.district" for="field_district"
+            >District</label
+          >
+          <select class="form-control" id="field_district" data-cy="district" name="district" formControlName="district">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="districtOption.id === editForm.get('district')!.value?.id ? editForm.get('district')!.value : districtOption"
+              *ngFor="let districtOption of districtsSharedCollection; trackBy: trackDistrictById"
+            >
+              {{ districtOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

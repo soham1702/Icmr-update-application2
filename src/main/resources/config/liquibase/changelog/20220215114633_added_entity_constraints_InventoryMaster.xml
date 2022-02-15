@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity InventoryMaster.
+    -->
+    <changeSet id="20220215114633-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="inventory_type_id"
+                                 baseTableName="inventory_master"
+                                 constraintName="fk_inventory_master__inventory_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="inventory_type"/>
+    </changeSet>
+</databaseChangeLog>
